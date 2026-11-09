@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "NOVA",
+    "slug": "nova-assistant",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#050811"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nova.assistant",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "NOVA requires microphone access for natural voice conversations.",
+        "NSSpeechRecognitionUsageDescription": "NOVA uses speech recognition to understand your instructions."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#050811"
+      },
+      "package": "com.nova.assistant",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MICROPHONE",
+        "android.permission.BATTERY_STATS"
+      ]
+    }
+  }
+}
+

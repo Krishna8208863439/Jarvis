@@ -1,0 +1,44 @@
+name: NOVA CI Pipeline
+
+on:
+  push:
+    branches: [main, master, dev]
+  pull_request:
+    branches: [main, master, dev]
+
+jobs:
+  core-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          cd services/core
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Backend Tests
+        run: |
+          cd services/core
+          pytest tests/ -v
+
+  web-and-protocol-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 12
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install workspace packages
+        run: pnpm install
+      - name: Build shared protocol & web
+        run: pnpm build
+

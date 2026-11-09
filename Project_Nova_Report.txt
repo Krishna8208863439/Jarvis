@@ -1,0 +1,4 @@
+# Project NOVA Engineering Report
+Topic: AI Voice Assistant
+Architecture: Hub-and-Agent Mesh
+Status: Complete
